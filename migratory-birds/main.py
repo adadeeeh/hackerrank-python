@@ -1,5 +1,3 @@
-from collections import Counter
-
 def migratoryBirds(arr):
     birdCount = [0, 0, 0, 0, 0, 0]
 
