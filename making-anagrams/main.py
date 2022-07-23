@@ -10,28 +10,21 @@ def makingAnagrams(s1, s2):
     s1Count = Counter(s1Sort)
     s2Count = Counter(s2Sort)
 
-    s1List = []
-    s2List = []
     key = []
 
+    # find the same char
     for k in s1Count.keys():
-        s1List.append(k)
-
-    for k in s2Count.keys():
-        s2List.append(k)
-
-    for k in s1List:
-        if k in s2List:
+        if k in s2Count.keys():
             key.append(k)
 
+    # count the final word
     for k in key:
         if abs(s1Count.get(k) - s2Count.get(k)) == 0:
             finalWordCount += s1Count.get(k)
+        elif s1Count.get(k) < s2Count.get(k):
+            finalWordCount += s1Count.get(k)
         else:
-            if s1Count.get(k) < s2Count.get(k):
-                finalWordCount += s1Count.get(k)
-            else:
-                finalWordCount += s2Count.get(k)
+            finalWordCount += s2Count.get(k)
         
     deletionCount = (len(s1) - finalWordCount) + (len(s2) - finalWordCount)
 
